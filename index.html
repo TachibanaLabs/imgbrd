@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">	
+	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<title>imgbrd</title>		
+		
+			
+
+		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+		<script>
+  			// Initialize Firebase
+  			var config = {
+    			apiKey: "AIzaSyBlhQDa-EuSwfRb4SjPwkAj6r8kxdmk1Ig",
+    			authDomain: "tachibana-labs.firebaseapp.com",
+    			databaseURL: "https://tachibana-labs.firebaseio.com",
+    			projectId: "tachibana-labs",
+    			storageBucket: "tachibana-labs.appspot.com",
+    			messagingSenderId: "61753021492"
+			  	};
+			  firebase.initializeApp(config);
+			  
+	</script>
+
+</head>
+<body>
+	<div class="row">
+		<div class=" col-lg-12 text-center">
+			<h1>This is test</h1>
+			<h2 id="holaMundo"></h2>
+		</div>
+		<div class="col-lg-12 text-center">
+			<img id="serval-test" src="img/serval.png">
+		</div>
+	</div>
+	
+</body>
+
+</html>
