@@ -5,43 +5,76 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
 	<link href="css/style.css" rel="stylesheet">	
 	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
 </head>
 <body>
 	<div class="row">
-		<div class=" col-lg-12 text-center">
-			<h1>This is test</h1>
+		<div id="top" > <a href="top"></a></div> 
+		<div id="boards_nav" class=" boardlist col-lg-12 text-center"><!--  nav de boards -->
+			<span>
+				[
+				<a href="#">test 1 </a> /
+				<a href="#">test 2 </a> /
+				<a href="#">test 3 </a> /
+				<a href="#">test 4 </a> /
+				<a href="#">test 5 </a> 
+				]
+			</span>
+		</div>	
+		<div class="col-lg-12 text-center"><!-- banner -->
+			<img id="banner" src="img/banner.jpg">
+		</div> 
+		<div class="col-lg-12 text-center"><!-- main title -->
+			<div class="h1"><strong> /bns/ - Benis </strong></div>
+			<div class="h4"><small>"Some people like cupcakes better. I, for one care less for them!"</small></div>
 		</div>
-		<div class="col-lg-12 text-center">
-			<div class="col-lg-12">
-				<img id="serval-test" src="img/serval.png">
+		
+	</div>
+<!-- _______________________________________________________________ -->
+		<div class="form">		
+			<table class="form-post">
+				<form id="form">
+					<tbody>
+						<tr>
+							<td class="thicc">Name</td>
+						  		<td>
+						  			<input type="text" id="nombre"  size="25" maxlength="35" autocomplete="off" tabindex="1">
+															<button onclick="blanco()" type="button" id="btnEnviar">Enviar</button>
+						  		</td>
+						</tr>
+						<tr>
+							<td class="thicc">Comment</td>
+						  		<td>
+						  			<textarea name="body" id="mensaje" rows="6" cols="35" tabindex="3"></textarea>
+						  		</td>
+						</tr>
+					</tbody>
+				</form>
+			</table>
+		</div>
+		<div class="col-lg-12 boton-top-bottom"><!-- navback -->
+			<span>
+				<a href="#top">[Top]</a><a href="#bottom">[Bottom]</a>
+			</span>
+		</div>
+		<div class="row">
+				<div class="col-lg-12 ">					
+						<div id="chat">
+							<!-- aqui se concatenan los divs -->
+						</div>	
+				</table>
 			</div>
-			<div class="row">
-				<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-					<div class="scroll"  id="style-1">
-						<p id="chat"></p>	
-					</div>
-				</div>
-			</div>			
+			
+		<div class="col-lg-12 boton-top-bottom"><!-- navback -->
+			<span>
+				<a href="#top">[Top]</a><a href="#bottom">[Bottom]</a>
+			</span>
 		</div>
-		<div class="row text-center">
-				<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">			
-					<form class="form-inline">
-						<div class="form-group">
- 							<label for="nombre">Nombre</label>
-							<input  type="text" id="nombre" name="test">	
-						</div>
-						<br>
-						<div class="form-group">
-							<label for="mensaje">Mensaje</label>
-							<textarea  class="form-control input-sm" id="mensaje"></textarea>
-						</div>
-						<button type="button" id="btnEnviar">Enviar</button>
-					</form>
-				</div>
-		</div>
+	</div>
+	<div id="bottom" ><a href="bottom"></a></div><!-- referencia bottom boton navegacion -->
 	</div>
 </body> 
 <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -64,11 +97,14 @@
 	btnEnviar.addEventListener("click", function enviar(){
 	  var nombre = txtnombre.value;
 	  var mensaje = txtmensaje.value;	   
+			
 	firebase.database().ref('chat').push({
 		name: 	nombre,
 		message: mensaje
 	  	});
-	  });
+	  });	
+	var hulabula =Math.random().toString(36).substr(2, 5);
+	
 	firebase.database().ref('chat')
 	.on('value',function(snapshot){//se subscribe al evento value 
 			var html =""; // lo hace cadena
@@ -76,9 +112,22 @@
 			var element = e.val();//e hace referencia al snapshot 
 			var nombre = element.name;
 			var mensaje = element.message;
-			html += "<b>"+nombre+"- "+mensaje+"</b>"+"<br>";
+			html += '<div id="newId">'+'<a href="hulabula"></a>'+'<a href="#hulabula">Id :'+hulabula+'</a>'+'<p id="nombre">'+nombre +'</p>' +mensaje+ '</div>'
 		});
 		chatUl.innerHTML = html;
 	});
+	function hulabula(){
+	document.getElementById("hulabula").innerHTML = Math.random().toString(36).substr(2, 5);
+	}
+
+
+	document.getElementById("chat").addEventListener("click", blanco);
+	function blanco(){
+		document.getElementById("form").reset();
+		
+
+	}
+
 </script>
+	<!-- <script src="js/ js.js"></script> -->
 </html>
