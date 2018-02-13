@@ -52,7 +52,7 @@ table.form-post>tbody>tr>td:first-child {
 table.form-post>tbody>tr>td>input,textarea{
   border:1px solid grey;
 }
-td.thicc{
+td.thicc{ 
  font-weight:bold;
 padding:5px;
 }
