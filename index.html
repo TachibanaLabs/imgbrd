@@ -41,7 +41,7 @@
 							<td class="thicc">Name</td>
 						  		<td>
 						  			<input type="text" id="nombre"  size="25" maxlength="35" autocomplete="off" tabindex="1">
-									<button  type="button" id="btnEnviar">Enviar</button>
+									<button type="button" id="btnEnviar">Enviar</button>
 						  		</td>
 						</tr>
 						<tr>
@@ -113,23 +113,21 @@
    		messagingSenderId: "61753021492"
 	  	};
 	firebase.initializeApp(config); 
-	  var txtnombre = document.getElementById('nombre');
-	  var txtmensaje= document.getElementById('mensaje');
-	  var btnEnviar= document.getElementById('btnEnviar');
-	  var chatUl = document.getElementById('chat');
+		 var txtnombre = document.getElementById('nombre');
+		 var txtmensaje= document.getElementById('mensaje');
+		 var btnEnviar= document.getElementById('btnEnviar');
+		 var chatUl = document.getElementById('chat');
 	btnEnviar.addEventListener("click", function enviar(){
-	  var nombre = txtnombre.value;
-	  var mensaje = txtmensaje.value;	
-	  var randomId =Math.random().toString(36).substr(2, 5);
-	  var id = randomId;   
-			
+	 	var nombre = txtnombre.value;
+	 	var mensaje = txtmensaje.value;	
+	 	var randomId = Math.random().toString(36).substr(2, 5);
+	 	var id = randomId;   
 	firebase.database().ref('chat').push({
 		id: id,
 		name: 	nombre,
 		message: mensaje
 	  	});
 	  });	
-	
 	firebase.database().ref('chat')
 	.on('value',function(snapshot){//se subscribe al evento value 
 			var html =""; // lo hace cadena
@@ -138,7 +136,6 @@
 			var nombre = element.name;
 			var finalId = element.id;
 			var mensaje = element.message;
-			var html2 = ""
 			var idsNumber = document.getElementById("chat");
 	
 			html += 
@@ -151,20 +148,12 @@
 					'<p id="mensaje">'+mensaje+'</p>'+
 				'</div>'+
 			 '</div>'	
-		});
-		
+			});
 		chatUl.innerHTML = html;
-
 	});
-
-
-
-	
-	// document.getElementById("chat").addEventListener("click", blanco);
-	// function blanco(){
-	// 	document.getElementById("form").reset();
-	// }
-	// ESTA ES LA PARTE QUE NO PUEDO SOLUCIONAR PUESTO QUE INTERFIERE CON LA FUNCION ANTERIOR 	PARA PODER DEJAR LOS INPUTS Y EL TEXT
-
+		//  	document.getElementById("chat").addEventListener("click", blanco);
+	 	//     	function reset(){
+		// 		document.getElementById("form").reset();
+		// 		}
 </script>
 </html>
