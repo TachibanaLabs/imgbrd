@@ -139,7 +139,8 @@
             message: mensaje
         });
 
-        document.getElementById("form").reset();
+        var formEl = document.getElementById("form");
+        formEl.reset();
     });
 
     firebase.database().ref('chat')
