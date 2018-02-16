@@ -3,15 +3,6 @@ body {
 	background-color: #EAD894;
 	color:#733A12;
 }
-#serval-test{
-	border: 3px solid #733A12;
-	border-radius: 5px;
-	width: 350px;
-}
-ul{
-	list-style: none;
-}
-
 
 a,a:visited {
     color:#733A12;
@@ -46,7 +37,7 @@ table {
     border-collapse: separate;
 }
 table.form-post>tbody>tr>td:first-child {
-    background-color: hsl(38, 73%, 59%);
+    background-color: hsl(47, 72%, 71%);
     border: 2px solid #733A12;
 }
 table.form-post>tbody>tr>td>input,textarea{
@@ -56,33 +47,51 @@ td.thicc{
  font-weight:bold;
 padding:5px;
 }
-.verde{
-  border:1px solid black;
-  width: 1000px;
-  height: 1000px;
-  margin-left: 40px;
-  margin-right: -40px;
+#op{
+  background-color:#eaca79;
+      height:100%;
+      text-align:left;
+      margin: 10px;
+      padding:5px;
+      padding-left: 15px;
+}
+#op-header>img{
+    width: 300px;
+}
+#op-header>p{
+    font-weight: bold;
 }
 #chat{
-	 background-color:hsl(38, 73%, 59%);
+	 background-color:#EAD894;
   	height:100%;
-  	border:2px solid #733A12;
-  	text-align:center;
+    width: 80%;
     padding: 5px;
     margin: 10px;
 }
 #newId{
-      background-color:#EAD894;
+      background-color:#eaca79;
       height:100%;
-      border: 1px solid #733A12;
-      text-align:center;
+   
+      text-align:left;
   		margin: 10px;
       padding:5px;
+      padding-left: 15px;
+     
  	}
  	#nombre{
 		font-size: 1em;
 		font-weight: bold;
  }
+ #header-response{
+  width: 50%;
+ }
+ #lista-response{
+  
+  list-style-type: none; 
+ }
+ #lista-response ul  {
+    display:inline-block;
+   }
 @media only screen and (max-width: 750px){
       .boton-top-bottom{
         text-align: center;

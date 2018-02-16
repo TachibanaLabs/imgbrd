@@ -33,7 +33,6 @@
 		</div>
 		
 	</div>
-<!-- _______________________________________________________________ -->
 		<div class="form">		
 			<table class="form-post">
 				<form id="form">
@@ -42,7 +41,7 @@
 							<td class="thicc">Name</td>
 						  		<td>
 						  			<input type="text" id="nombre"  size="25" maxlength="35" autocomplete="off" tabindex="1">
-															<button onclick="blanco()" type="button" id="btnEnviar">Enviar</button>
+									<button  type="button" id="btnEnviar">Enviar</button>
 						  		</td>
 						</tr>
 						<tr>
@@ -55,11 +54,35 @@
 				</form>
 			</table>
 		</div>
-		<div class="col-lg-12 boton-top-bottom"><!-- navback -->
+		<div class="col-lg-12 boton-top-bottom">
 			<span>
 				<a href="#top">[Top]</a><a href="#bottom">[Bottom]</a>
 			</span>
 		</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="op">
+						<div id="op-header">
+							<p>Este "OP" sigo trabajandolo para que se abra y cierre la imagen como en cualquier chan</p>
+
+							<img id="opImage" src="img/potatoe.gif"/>
+						</div>
+						<div id="op-message">
+							<p>The muffin man is seated at the table
+								in the laboratory of the utility muffin
+								Research kitchen... reaching for an 
+								oversized chrome spoon he gathers an
+								Intimate quantity of dried muffin 
+								remnants and brushing his scapular aside
+								Procceds to dump these inside of his shirt...
+								He turns to us and speaks:
+								Some people like cupcakes better.
+								I for one care less for them!
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		<div class="row">
 				<div class="col-lg-12 ">					
 						<div id="chat">
@@ -68,13 +91,13 @@
 				</table>
 			</div>
 			
-		<div class="col-lg-12 boton-top-bottom"><!-- navback -->
+		<div class="col-lg-12 boton-top-bottom">
 			<span>
 				<a href="#top">[Top]</a><a href="#bottom">[Bottom]</a>
 			</span>
 		</div>
 	</div>
-	<div id="bottom" ><a href="bottom"></a></div><!-- referencia bottom boton navegacion -->
+	<div id="bottom" ><a href="bottom"></a></div>
 	</div>
 </body> 
 <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -96,14 +119,16 @@
 	  var chatUl = document.getElementById('chat');
 	btnEnviar.addEventListener("click", function enviar(){
 	  var nombre = txtnombre.value;
-	  var mensaje = txtmensaje.value;	   
+	  var mensaje = txtmensaje.value;	
+	  var randomId =Math.random().toString(36).substr(2, 5);
+	  var id = randomId;   
 			
 	firebase.database().ref('chat').push({
+		id: id,
 		name: 	nombre,
 		message: mensaje
 	  	});
 	  });	
-	var hulabula =Math.random().toString(36).substr(2, 5);
 	
 	firebase.database().ref('chat')
 	.on('value',function(snapshot){//se subscribe al evento value 
@@ -111,23 +136,35 @@
 		snapshot.forEach(function(e){
 			var element = e.val();//e hace referencia al snapshot 
 			var nombre = element.name;
+			var finalId = element.id;
 			var mensaje = element.message;
-			html += '<div id="newId">'+'<a href="hulabula"></a>'+'<a href="#hulabula">Id :'+hulabula+'</a>'+'<p id="nombre">'+nombre +'</p>' +mensaje+ '</div>'
+			var html2 = ""
+			var idsNumber = document.getElementById("chat");
+	
+			html += 
+			'<div id="newId">'+
+				'<div id="header-response">'+
+						'<a href="#'+finalId+'">Id :'+finalId+'</a>'+
+						'<p id="nombre">'+nombre +'</p>'+
+				'</div >' +
+				'<div id="mensaje-response">'+
+					'<p id="mensaje">'+mensaje+'</p>'+
+				'</div>'+
+			 '</div>'	
 		});
-		chatUl.innerHTML = html;
-	});
-	function hulabula(){
-	document.getElementById("hulabula").innerHTML = Math.random().toString(36).substr(2, 5);
-	}
-
-
-	document.getElementById("chat").addEventListener("click", blanco);
-	function blanco(){
-		document.getElementById("form").reset();
 		
+		chatUl.innerHTML = html;
 
-	}
+	});
+
+
+
+	
+	// document.getElementById("chat").addEventListener("click", blanco);
+	// function blanco(){
+	// 	document.getElementById("form").reset();
+	// }
+	// ESTA ES LA PARTE QUE NO PUEDO SOLUCIONAR PUESTO QUE INTERFIERE CON LA FUNCION ANTERIOR 	PARA PODER DEJAR LOS INPUTS Y EL TEXT
 
 </script>
-	<!-- <script src="js/ js.js"></script> -->
 </html>
